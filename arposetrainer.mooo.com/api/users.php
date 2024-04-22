@@ -51,7 +51,7 @@ switch($request_method)
 function getUsers()
 {
 	global $connection;
-	$sql = "SELECT * from user";
+	$sql = "SELECT * from users";
 	$result = $connection->query($sql);
 	$response = array();
 	if ($result->num_rows > 0) {
@@ -66,7 +66,7 @@ function getUsers()
 function getUser($id)
 {
 	global $connection;
-	$sql = "SELECT * from user WHERE id='".$id."'";
+	$sql = "SELECT * from users WHERE id='".$id."'";
 	$result = $connection->query($sql);
 	$row = $result->fetch_assoc();
 	header('Content-Type: application/json');
@@ -77,7 +77,7 @@ function getUser($id)
 function insertUser($name, $email, $password)
 {
 	global $connection;
-	$sql = "INSERT INTO user (name, email,password) VALUES ('".$name."','".$email."','".$password."')";
+	$sql = "INSERT INTO users (name, email,password) VALUES ('".$name."','".$email."','".$password."')";
 	$response = array();
 	if($connection->query($sql))
 	{
@@ -104,7 +104,7 @@ function insertUser($name, $email, $password)
 function updateUser($id, $name)
 {
 	global $connection;
-	$sql = "UPDATE user SET name='".$name."' WHERE id='".$id."'";
+	$sql = "UPDATE users SET name='".$name."' WHERE id='".$id."'";
 	$response = array();
 	if($connection->query($sql))
 	{
@@ -131,7 +131,7 @@ function updateUser($id, $name)
 function deleteUser($id)
 {
 	global $connection;
-	$sql = "DELETE from user WHERE id='".$id."'";
+	$sql = "DELETE from users WHERE id='".$id."'";
 	$response = array();
 	if($connection->query($sql))
 	{
